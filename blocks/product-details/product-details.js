@@ -158,9 +158,27 @@ export default async function decorate(block) {
 
     CarouselMainImage: (ctx) => {
       if (ctx.mediaType === 'image') {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'magnifier-wrapper';
         tryRenderAemAssetsImage(ctx, {
           ...imageSlotConfig(ctx),
+          wrapper,
         });
+        setTimeout(() => {
+          const img = wrapper.querySelector('img');
+          if (!img) return;
+          img.addEventListener('mousemove', (e) => {
+            const rect = img.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(2)';
+          });
+          img.addEventListener('mouseleave', () => {
+            img.style.transform = 'scale(1)';
+            img.style.transformOrigin = 'center center';
+          });
+        }, 100);
       }
     },
   };
