@@ -302,16 +302,7 @@ export default async function decorate(block) {
 
   const banner = document.createElement('div');
   banner.className = 'free-shipping-banner';
-  banner.innerHTML = `<span>🚚 Free shipping on orders over $50</span>
-    <button class="banner-theme-toggle">🌙</button>`;
-  const toggleBtn = banner.querySelector('.banner-theme-toggle');
-  toggleBtn.addEventListener('click', () => {
-    banner.classList.toggle('dark');
-    toggleBtn.textContent =
-      banner.classList.contains('dark')
-        ? '☀️'
-        : '🌙';
-  });
+  banner.innerHTML = `<span>🚚 Free shipping on orders over $50</span>`;
   $list.prepend(banner);
 
   let cartViewEventPublished = false;
