@@ -92,25 +92,19 @@
   transition: all 0.3s ease;
 }
 
-.free-shipping-banner.dark {
-  background: linear-gradient(135deg, #1f2937, #111827);
-  color: #f9fafb;
-  border: 1px solid #374151;
+body.dark-theme .cart__wrapper,
+body.dark-theme .cart__left-column,
+body.dark-theme .cart__right-column,
+body.dark-theme .cart__order-summary,
+body.dark-theme .cart__gift-options {
+  background: var(--surface-color);
+  color: var(--text-color);
 }
 
-.banner-theme-toggle {
-  border: none;
-  background: rgba(255, 255, 255, .2);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.free-shipping-banner.dark .banner-theme-toggle {
-  background: rgba(255, 255, 255, .1);
-  color: white;
+body.dark-theme .free-shipping-banner {
+  background: #163a28;
+  color: #8ef0bd;
+  border-color: #245c40;
 }
 
 @media (min-width: 768px) {

@@ -230,6 +230,35 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
 
+  /** Theme Toggle */
+  const themeToggleWrapper = document.createElement('div');
+  themeToggleWrapper.className = 'theme-toggle-wrapper';
+  themeToggleWrapper.innerHTML = `
+  <button
+    type="button"
+    class="theme-toggle-btn"
+    aria-label="Toggle Theme"
+  >
+    🌙
+  </button>`;
+  navTools.prepend(themeToggleWrapper);
+  const themeToggleBtn = themeToggleWrapper.querySelector('.theme-toggle-btn');
+  // restore saved theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    themeToggleBtn.textContent = '☀️';
+  }
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    const isDark = document.body.classList.contains('dark-theme');
+    themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem(
+      'theme',
+      isDark ? 'dark' : 'light',
+    );
+  });
+
   /** Wishlist */
   const wishlist = document.createRange().createContextualFragment(`
      <div class="wishlist-wrapper nav-tools-wrapper">
