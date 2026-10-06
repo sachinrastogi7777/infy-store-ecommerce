@@ -83,16 +83,6 @@
   width: 100%;
 }
 
-body.dark-theme .product-details__wrapper {
-  background: var(--surface-color);
-  color: var(--text-color);
-}
-
-body.dark-theme .product-details__right-column,
-body.dark-theme .product-details__left-column {
-  color: var(--text-color);
-}
-
 @media (min-width: 900px) {
   .product-details__wrapper {
     grid-template-columns: repeat(var(--grid-3-columns), 1fr);

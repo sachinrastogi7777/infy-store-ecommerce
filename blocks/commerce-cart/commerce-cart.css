@@ -92,21 +92,6 @@
   transition: all 0.3s ease;
 }
 
-body.dark-theme .cart__wrapper,
-body.dark-theme .cart__left-column,
-body.dark-theme .cart__right-column,
-body.dark-theme .cart__order-summary,
-body.dark-theme .cart__gift-options {
-  background: var(--surface-color);
-  color: var(--text-color);
-}
-
-body.dark-theme .free-shipping-banner {
-  background: #163a28;
-  color: #8ef0bd;
-  border-color: #245c40;
-}
-
 @media (min-width: 768px) {
   .cart__wrapper {
     flex-direction: row;
