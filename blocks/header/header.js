@@ -246,17 +246,23 @@ export default async function decorate(block) {
   // restore saved theme
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
-    document.body.classList.add('dark-theme');
+    document.documentElement.setAttribute(
+      'data-theme',
+      'dark',
+    );
     themeToggleBtn.textContent = '☀️';
   }
   themeToggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem(
-      'theme',
-      isDark ? 'dark' : 'light',
-    );
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      themeToggleBtn.textContent = '🌙';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      themeToggleBtn.textContent = '☀️';
+    }
   });
 
   /** Wishlist */
